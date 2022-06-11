@@ -13,4 +13,5 @@ sudo service docker restart
 sudo apt update
 sudo apt upgrade
 sudo docker pull odoo
-run -it odoo
+sudo docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo -e POSTGRES_DB=postgres --name db postgres:13
+sudo docker run -p 8069:8069 --name odoo --link db:db -t odoo
